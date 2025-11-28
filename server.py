@@ -39,8 +39,12 @@ def handle_client(connection, address):
             # issue is connection aborted error every time client types exit whilst recv thread in use
             # recvs any msg from client
             client_msg = connection.recv(1024)
+            client_msg = client_msg.decode()
             
-            print(client_msg)
+            if not client_msg:
+                break
+            else:
+                print(client_msg)
             
     except (ConnectionAbortedError, ConnectionResetError, BrokenPipeError) as e:
         print(f"Error: {e}")

@@ -48,7 +48,8 @@ def handle_msg(client_socket):
                 break
             else:
                 client_socket.send(msg.encode())
-                msg = input()
+                continue
+            
         except OSError as e:
             print(f"Error from client side: {e}")
             
